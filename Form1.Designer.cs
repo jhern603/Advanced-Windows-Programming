@@ -60,8 +60,9 @@ namespace assignment_3
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textbox = new System.Windows.Forms.TextBox();
+            this.calculator_textbox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.splitter2 = new System.Windows.Forms.Splitter();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dayCounter = new System.Windows.Forms.NumericUpDown();
@@ -211,6 +212,7 @@ namespace assignment_3
             // 
             // horizontal_container.Panel2
             // 
+            this.horizontal_container.Panel2.Controls.Add(this.splitter2);
             this.horizontal_container.Panel2.Controls.Add(this.label4);
             this.horizontal_container.Panel2.Controls.Add(this.label3);
             this.horizontal_container.Panel2.Controls.Add(this.dayCounter);
@@ -253,7 +255,7 @@ namespace assignment_3
             this.tableLayoutPanel1.Controls.Add(this.button4, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textbox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.calculator_textbox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -533,6 +535,7 @@ namespace assignment_3
             this.square.TabIndex = 7;
             this.square.Text = "SQUARE";
             this.square.UseVisualStyleBackColor = false;
+            this.square.Click += new System.EventHandler(this.operator_handler);
             // 
             // inverse
             // 
@@ -546,6 +549,7 @@ namespace assignment_3
             this.inverse.TabIndex = 6;
             this.inverse.Text = "1/x";
             this.inverse.UseVisualStyleBackColor = false;
+            this.inverse.Click += new System.EventHandler(this.operator_handler);
             // 
             // button4
             // 
@@ -586,22 +590,23 @@ namespace assignment_3
             this.button2.TabIndex = 3;
             this.button2.Text = "CE";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textbox
+            // calculator_textbox
             // 
-            this.textbox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.textbox, 4);
-            this.textbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox.Location = new System.Drawing.Point(3, 3);
-            this.textbox.MaxLength = 999999999;
-            this.textbox.Multiline = true;
-            this.textbox.Name = "textbox";
-            this.textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textbox.Size = new System.Drawing.Size(394, 72);
-            this.textbox.TabIndex = 1;
-            this.textbox.Text = "0";
+            this.calculator_textbox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calculator_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.calculator_textbox, 4);
+            this.calculator_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.calculator_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calculator_textbox.Location = new System.Drawing.Point(3, 3);
+            this.calculator_textbox.MaxLength = 999999999;
+            this.calculator_textbox.Multiline = true;
+            this.calculator_textbox.Name = "calculator_textbox";
+            this.calculator_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.calculator_textbox.Size = new System.Drawing.Size(394, 72);
+            this.calculator_textbox.TabIndex = 1;
+            this.calculator_textbox.Text = "0";
             // 
             // button1
             // 
@@ -616,6 +621,16 @@ namespace assignment_3
             this.button1.Text = "%";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.operator_handler);
+            // 
+            // splitter2
+            // 
+            this.splitter2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter2.Location = new System.Drawing.Point(0, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(400, 3);
+            this.splitter2.TabIndex = 9;
+            this.splitter2.TabStop = false;
             // 
             // label4
             // 
@@ -1071,7 +1086,7 @@ namespace assignment_3
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textbox;
+        private System.Windows.Forms.TextBox calculator_textbox;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button22;
@@ -1098,6 +1113,7 @@ namespace assignment_3
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Splitter splitter2;
     }
 }
 

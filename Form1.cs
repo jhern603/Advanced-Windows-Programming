@@ -23,12 +23,23 @@ namespace assignment_3
         {
             Button button = sender as Button;
             var v = new object();
-           
+            String calculator_contents ="";
+            String sqrt = "";
             try
             {
-                v = new DataTable().Compute(textbox.Text, "");
-                this.calculator_history.Add(textbox.Text, v.ToString());
-                textbox.Text = v.ToString();
+                foreach(char c in calculator_textbox.Text)
+                { 
+                    if (c == '√' || c == '(')
+                        continue;
+                    else if(c == ')')
+                        calculator_contents += Math.Sqrt(Double.Parse(sqrt));
+                    else
+                        sqrt += c;
+                }
+                
+                v = new DataTable().Compute(calculator_contents, "");
+                this.calculator_history.Add(calculator_contents, v.ToString());
+                calculator_textbox.Text = v.ToString();
             }
             catch (Exception ex)
             {
@@ -37,23 +48,34 @@ namespace assignment_3
         }
         private void operator_handler(object sender, EventArgs e)
         {
-            if (textbox.Text == "NaN" || textbox.Text == "∞")
-                textbox.Clear();
+            if (calculator_textbox.Text == "NaN" || calculator_textbox.Text == "∞")
+                calculator_textbox.Clear();
             Button button = sender as Button;
-            textbox.Text += button.Text;
+            if (button.Name == "squareroot")
+                calculator_textbox.Text = string.Format("√({0})", calculator_textbox.Text);
+            else if(button.Name == "inverse")
+                calculator_textbox.Text = string.Format("1/({0})", calculator_textbox.Text);
+            else if(button.Name == "square")
+                calculator_textbox.Text = string.Format("{0}^2", calculator_textbox.Text);
+            else
+                calculator_textbox.Text += button.Text;
         }
         private void digit_handler(object sender, EventArgs e)
         {
-            if (textbox.Text == "0" || textbox.Text == "NaN" || textbox.Text == "∞")
-                textbox.Clear();
+            if (calculator_textbox.Text == "0" || calculator_textbox.Text == "NaN" || calculator_textbox.Text == "∞")
+                calculator_textbox.Clear();
             Button button = sender as Button;
-            textbox.Text += button.Text;
+            calculator_textbox.Text += button.Text;
         }
         private void handle_clear(object sender, EventArgs e)
         {
-            textbox.Text = 0.ToString();
+            calculator_textbox.Text = 0.ToString();
         }
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            calculator_textbox.Text = 0.ToString();
+            calculator_history.Clear();
+        }
         //Day Difference Calculator
         private void calculate_date_difference(object sender, EventArgs e)
         {
