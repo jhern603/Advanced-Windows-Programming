@@ -21,6 +21,7 @@ namespace assignment_3
         //Calculator
         private void calculate_result(object sender, EventArgs e)
         {
+            //TODO: fix inverse, SIN, COS, TAN, LOG
             Button button = sender as Button;
             var v = new object();
             String calculator_contents ="";
@@ -36,7 +37,7 @@ namespace assignment_3
                     else
                         sqrt += c;
                 }
-                
+                calculator_contents += sqrt;
                 v = new DataTable().Compute(calculator_contents, "");
                 this.calculator_history.Add(calculator_contents, v.ToString());
                 calculator_textbox.Text = v.ToString();
@@ -57,6 +58,17 @@ namespace assignment_3
                 calculator_textbox.Text = string.Format("1/({0})", calculator_textbox.Text);
             else if(button.Name == "square")
                 calculator_textbox.Text = string.Format("{0}^2", calculator_textbox.Text);
+            else if(button.Name == "ERASE")
+            {
+                calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
+            }else if(button.Name == "negate")
+            {
+                if(calculator_textbox.Text.Substring(0,1) == "-")
+                    calculator_textbox.Text = calculator_textbox.Text.Remove(0, 1);
+                else
+                    calculator_textbox.Text = string.Format("-{0}", calculator_textbox.Text);
+
+            }
             else
                 calculator_textbox.Text += button.Text;
         }
@@ -79,6 +91,11 @@ namespace assignment_3
                     break;
                 case ("TAN"):
                     calculator_textbox.Text = string.Format("TAN({0})", calculator_textbox.Text);
+                    break;
+                case ("ERASE"):
+                    calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
+                    if (calculator_textbox.Text.Length == 0)
+                        calculator_textbox.Text = 0.ToString();
                     break;
             }
         }

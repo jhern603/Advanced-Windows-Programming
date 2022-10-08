@@ -40,7 +40,7 @@ namespace assignment_3
             this.button24 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.negate = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
@@ -108,7 +108,7 @@ namespace assignment_3
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ERASE = new System.Windows.Forms.Button();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -261,7 +261,7 @@ namespace assignment_3
             this.tableLayoutPanel1.Controls.Add(this.button24, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.button23, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.button22, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.button21, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.negate, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.button20, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.button19, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.button18, 1, 5);
@@ -278,7 +278,7 @@ namespace assignment_3
             this.tableLayoutPanel1.Controls.Add(this.squareroot, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.square, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.inverse, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ERASE, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.calculator_textbox, 0, 0);
@@ -340,18 +340,19 @@ namespace assignment_3
             this.button22.Text = "0";
             this.button22.UseVisualStyleBackColor = false;
             // 
-            // button21
+            // negate
             // 
-            this.button21.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button21.Location = new System.Drawing.Point(3, 311);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(94, 41);
-            this.button21.TabIndex = 22;
-            this.button21.Text = "+/-";
-            this.button21.UseVisualStyleBackColor = false;
+            this.negate.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.negate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.negate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.negate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.negate.Location = new System.Drawing.Point(3, 311);
+            this.negate.Name = "negate";
+            this.negate.Size = new System.Drawing.Size(94, 41);
+            this.negate.TabIndex = 22;
+            this.negate.Text = "+/-";
+            this.negate.UseVisualStyleBackColor = false;
+            this.negate.Click += new System.EventHandler(this.operator_handler);
             // 
             // button20
             // 
@@ -1032,21 +1033,22 @@ namespace assignment_3
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(22, 6);
             // 
-            // button4
+            // ERASE
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button4.BackgroundImage = global::assignment_3.Properties.Resources.eraser;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Location = new System.Drawing.Point(303, 81);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 40);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "ERASE";
-            this.button4.UseVisualStyleBackColor = false;
+            this.ERASE.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ERASE.BackgroundImage = global::assignment_3.Properties.Resources.eraser;
+            this.ERASE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ERASE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ERASE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ERASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ERASE.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ERASE.Location = new System.Drawing.Point(303, 81);
+            this.ERASE.Name = "ERASE";
+            this.ERASE.Size = new System.Drawing.Size(94, 40);
+            this.ERASE.TabIndex = 5;
+            this.ERASE.Text = "ERASE";
+            this.ERASE.UseVisualStyleBackColor = false;
+            this.ERASE.Click += new System.EventHandler(this.operator_handler);
             // 
             // toolStripButton1
             // 
@@ -1065,7 +1067,8 @@ namespace assignment_3
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(38, 20);
-            this.toolStripButton2.Text = "Erase";
+            this.toolStripButton2.Text = "ERASE";
+            this.toolStripButton2.Click += new System.EventHandler(this.Toolstrip_Operator_Handler);
             // 
             // toolStripButton3
             // 
@@ -1347,7 +1350,7 @@ namespace assignment_3
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button negate;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button18;
@@ -1364,7 +1367,7 @@ namespace assignment_3
         private System.Windows.Forms.Button squareroot;
         private System.Windows.Forms.Button square;
         private System.Windows.Forms.Button inverse;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ERASE;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
