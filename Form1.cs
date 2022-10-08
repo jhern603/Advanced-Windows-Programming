@@ -22,17 +22,19 @@ namespace assignment_3
         private void calculate_result(object sender, EventArgs e)
         {
             //TODO: fix inverse, SIN, COS, TAN, LOG
+            //Perhaps a sliding window?
             Button button = sender as Button;
             var v = new object();
-            String calculator_contents ="";
+            String calculator_contents = "";
             String sqrt = "";
             try
             {
-                foreach(char c in calculator_textbox.Text)
-                { 
+                for (int i = 0; i < calculator_textbox.Text.Length; i++)
+                {
+                    char c = calculator_textbox.Text[i];
                     if (c == '√' || c == '(')
                         continue;
-                    else if(c == ')')
+                    else if (c == ')')
                         calculator_contents += Math.Sqrt(Double.Parse(sqrt));
                     else
                         sqrt += c;
@@ -52,25 +54,30 @@ namespace assignment_3
             if (calculator_textbox.Text == "NaN" || calculator_textbox.Text == "∞")
                 calculator_textbox.Clear();
             Button button = sender as Button;
-            if (button.Name == "squareroot")
-                calculator_textbox.Text = string.Format("√({0})", calculator_textbox.Text);
-            else if(button.Name == "inverse")
-                calculator_textbox.Text = string.Format("1/({0})", calculator_textbox.Text);
-            else if(button.Name == "square")
-                calculator_textbox.Text = string.Format("{0}^2", calculator_textbox.Text);
-            else if(button.Name == "ERASE")
+            switch (button.Name)
             {
-                calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
-            }else if(button.Name == "negate")
-            {
-                if(calculator_textbox.Text.Substring(0,1) == "-")
-                    calculator_textbox.Text = calculator_textbox.Text.Remove(0, 1);
-                else
-                    calculator_textbox.Text = string.Format("-{0}", calculator_textbox.Text);
-
+                case "squareroot":
+                    calculator_textbox.Text = string.Format("√({0})", calculator_textbox.Text);
+                    break;
+                case "inverse":
+                    calculator_textbox.Text = string.Format("1/({0})", calculator_textbox.Text);
+                    break;
+                case "square":
+                    calculator_textbox.Text = string.Format("{0}^2", calculator_textbox.Text);
+                    break;
+                case "ERASE":
+                    calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
+                    break;
+                case "negate":
+                    if (calculator_textbox.Text.Substring(0, 1) == "-")
+                        calculator_textbox.Text = calculator_textbox.Text.Remove(0, 1);
+                    else
+                        calculator_textbox.Text = string.Format("-{0}", calculator_textbox.Text);
+                    break;
+                default:
+                    calculator_textbox.Text += button.Text;
+                    break;
             }
-            else
-                calculator_textbox.Text += button.Text;
         }
         private void Toolstrip_Operator_Handler(object sender, EventArgs e)
         {
