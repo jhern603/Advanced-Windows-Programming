@@ -57,13 +57,13 @@ namespace assignment_3
             switch (button.Name)
             {
                 case "squareroot":
-                    calculator_textbox.Text = string.Format("√({0})", calculator_textbox.Text);
+                    calculator_textbox.Text = $"√({calculator_textbox.Text})";
                     break;
                 case "inverse":
-                    calculator_textbox.Text = string.Format("1/({0})", calculator_textbox.Text);
+                    calculator_textbox.Text = $"1/({calculator_textbox.Text})";
                     break;
                 case "square":
-                    calculator_textbox.Text = string.Format("{0}^2", calculator_textbox.Text);
+                    calculator_textbox.Text = $"{calculator_textbox.Text}^2";
                     break;
                 case "ERASE":
                     calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
@@ -72,7 +72,7 @@ namespace assignment_3
                     if (calculator_textbox.Text.Substring(0, 1) == "-")
                         calculator_textbox.Text = calculator_textbox.Text.Remove(0, 1);
                     else
-                        calculator_textbox.Text = string.Format("-{0}", calculator_textbox.Text);
+                        calculator_textbox.Text = $"-{calculator_textbox.Text}";
                     break;
                 default:
                     calculator_textbox.Text += button.Text;
@@ -85,19 +85,19 @@ namespace assignment_3
             switch (button.Text)
             {
                 case ("LOG"):
-                    calculator_textbox.Text = string.Format("LOG({0})", calculator_textbox.Text);
+                    calculator_textbox.Text = $"LOG({calculator_textbox.Text})";
                     break;
                 case ("Square"):
-                    calculator_textbox.Text = string.Format("{0}^2", calculator_textbox.Text);
+                    calculator_textbox.Text = $"{calculator_textbox.Text}^2";
                     break;
                 case ("SIN"):
-                    calculator_textbox.Text = string.Format("SIN({0})", calculator_textbox.Text);
+                    calculator_textbox.Text = $"SIN({calculator_textbox.Text})";
                     break;
                 case ("COS"):
-                    calculator_textbox.Text = string.Format("COS({0})", calculator_textbox.Text);
+                    calculator_textbox.Text = $"COS({calculator_textbox.Text})";
                     break;
                 case ("TAN"):
-                    calculator_textbox.Text = string.Format("TAN({0})", calculator_textbox.Text);
+                    calculator_textbox.Text = $"TAN({calculator_textbox.Text})";
                     break;
                 case ("ERASE"):
                     calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
@@ -126,11 +126,7 @@ namespace assignment_3
         private void calculate_date_difference(object sender, EventArgs e)
         {
             if (((DateTimePicker)sender).ContainsFocus)
-            {
-                DateTime to = toDate.Value;
-                DateTime from = fromDate.Value;
-                dayCounter.Value = (to - from).Days + 1;
-            }
+                dayCounter.Value = (toDate.Value - fromDate.Value).Days + 1;
         }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -149,7 +145,7 @@ namespace assignment_3
         //Bottom StatusStrip
         private void timer1_Tick(object sender, EventArgs e)
         {
-            toolStripStatusLabel1.Text = String.Format("Hello! Today is {0}. The time is: {1}", DateTime.Today.ToLongDateString(), DateTime.Now.ToLongTimeString());
+            toolStripStatusLabel1.Text = $"Hello! Today is {DateTime.Today.ToLongDateString()}. The time is: {DateTime.Now.ToLongTimeString()}";
         }
         Dictionary<String, String> calculator_history;
     }
