@@ -60,6 +60,28 @@ namespace assignment_3
             else
                 calculator_textbox.Text += button.Text;
         }
+        private void Toolstrip_Operator_Handler(object sender, EventArgs e)
+        {
+            ToolStripButton button = sender as ToolStripButton;
+            switch (button.Text)
+            {
+                case ("LOG"):
+                    calculator_textbox.Text = string.Format("LOG({0})", calculator_textbox.Text);
+                    break;
+                case ("Square"):
+                    calculator_textbox.Text = string.Format("{0}^2", calculator_textbox.Text);
+                    break;
+                case ("SIN"):
+                    calculator_textbox.Text = string.Format("SIN({0})", calculator_textbox.Text);
+                    break;
+                case ("COS"):
+                    calculator_textbox.Text = string.Format("COS({0})", calculator_textbox.Text);
+                    break;
+                case ("TAN"):
+                    calculator_textbox.Text = string.Format("TAN({0})", calculator_textbox.Text);
+                    break;
+            }
+        }
         private void digit_handler(object sender, EventArgs e)
         {
             if (calculator_textbox.Text == "0" || calculator_textbox.Text == "NaN" || calculator_textbox.Text == "∞")
@@ -106,6 +128,5 @@ namespace assignment_3
             toolStripStatusLabel1.Text = String.Format("Hello! Today is {0}. The time is: {1}", DateTime.Today.ToLongDateString(), DateTime.Now.ToLongTimeString());
         }
         Dictionary<String, String> calculator_history;
-
     }
 }
