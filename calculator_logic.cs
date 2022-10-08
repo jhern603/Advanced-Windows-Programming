@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace assignment_3
 {
-    internal class calculator_logic
+    public class Calculator_Logic
     {
+
     }
 }

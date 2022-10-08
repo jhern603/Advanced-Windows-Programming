@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="calculator_logic.cs" />
+    <Compile Include="Calculator_Logic.cs" />
     <Compile Include="day_counter_logic.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

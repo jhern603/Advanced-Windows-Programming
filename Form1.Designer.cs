@@ -553,14 +553,16 @@ namespace assignment_3
             // square
             // 
             this.square.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.square.BackgroundImage = global::assignment_3.Properties.Resources.power;
+            this.square.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.square.Dock = System.Windows.Forms.DockStyle.Fill;
             this.square.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.square.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.square.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.square.Location = new System.Drawing.Point(103, 127);
             this.square.Name = "square";
             this.square.Size = new System.Drawing.Size(94, 40);
             this.square.TabIndex = 7;
-            this.square.Text = "SQUARE";
+            this.square.Text = ".";
             this.square.UseVisualStyleBackColor = false;
             this.square.Click += new System.EventHandler(this.operator_handler);
             // 
@@ -591,7 +593,7 @@ namespace assignment_3
             this.ERASE.Name = "ERASE";
             this.ERASE.Size = new System.Drawing.Size(94, 40);
             this.ERASE.TabIndex = 5;
-            this.ERASE.Text = "ERASE";
+            this.ERASE.Text = ".";
             this.ERASE.UseVisualStyleBackColor = false;
             this.ERASE.Click += new System.EventHandler(this.operator_handler);
             // 
@@ -826,7 +828,7 @@ namespace assignment_3
             this.toolStripButton8});
             this.toolStrip1.Location = new System.Drawing.Point(0, 3);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(40, 228);
+            this.toolStrip1.Size = new System.Drawing.Size(40, 209);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
