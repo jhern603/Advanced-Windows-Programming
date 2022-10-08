@@ -15,7 +15,6 @@ namespace assignment_3
         public Form1()
         {
             InitializeComponent();
-            this.calculator_history = new Dictionary<string, string>();
         }
 
         //Calculator
@@ -25,30 +24,64 @@ namespace assignment_3
             //Perhaps a sliding window?
             Button button = sender as Button;
             var v = new object();
-            String calculator_contents = "";
-            String sqrt = "";
+            this.calculator_contents = "";
+            String operator_value = "";
+            String op = "";
             try
             {
-                for (int i = 0; i < calculator_textbox.Text.Length; i++)
-                {
-                    char c = calculator_textbox.Text[i];
-                    if (c == '√' || c == '(')
-                        continue;
-                    else if (c == ')')
-                        calculator_contents += Math.Sqrt(Double.Parse(sqrt));
-                    else
-                        sqrt += c;
-                }
-                calculator_contents += sqrt;
+                get_special_operator(ref calculator_contents, ref operator_value, ref op);
+                if (op.Equals("√"))
+                    calculator_contents += Math.Sqrt(Double.Parse(operator_value));
+                else if (op.Equals("COS"))
+                    calculator_contents += Math.Cos(Double.Parse(operator_value));
+                else if (op.Equals("SIN"))
+                    calculator_contents += Math.Sin(Double.Parse(operator_value));
+                else if (op.Equals("TAN"))
+                    calculator_contents += Math.Tan(Double.Parse(operator_value));
+                else if (op.Equals("LOG"))
+                    calculator_contents += Math.Log(Double.Parse(operator_value));
+                else if (op.Equals("POW"))
+                    calculator_contents += Math.Pow(Double.Parse(operator_value), 2);
                 v = new DataTable().Compute(calculator_contents, "");
-                this.calculator_history.Add(calculator_contents, v.ToString());
+                //this.calculator_history.Add(calculator_contents, v.ToString());
                 calculator_textbox.Text = v.ToString();
+                calculator_contents = v.ToString();
             }
             catch (Exception ex)
             {
                 v = "NaN";
             }
         }
+
+        private void get_special_operator(ref string calculator_contents, ref string operator_value, ref string op)
+        {
+            for (int i = 0; i < calculator_textbox.Text.Length; i++)
+            {
+                char c = calculator_textbox.Text[i];
+                if (!Char.IsDigit(c) && op.Length < 3)
+                {
+                    switch (c)
+                    {
+                        case '√':
+                        case 'S':
+                        case 'C':
+                        case 'T':
+                        case 'L':
+                        case 'P':
+                            for (int j = i + 1; j < calculator_textbox.Text.Length; j++)
+                            {
+                                op = calculator_textbox.Text.Substring(i, j);
+                                if (calculator_textbox.Text[j] == '(')
+                                    break;
+                            }
+                            break;
+                    }
+                }
+                if (Char.IsDigit(c))
+                    operator_value += c;
+            }
+        }
+
         private void operator_handler(object sender, EventArgs e)
         {
             if (calculator_textbox.Text == "NaN" || calculator_textbox.Text == "∞")
@@ -82,13 +115,13 @@ namespace assignment_3
         private void Toolstrip_Operator_Handler(object sender, EventArgs e)
         {
             ToolStripButton button = sender as ToolStripButton;
-            switch (button.Text)
+            switch (button.Name)
             {
                 case ("LOG"):
                     calculator_textbox.Text = $"LOG({calculator_textbox.Text})";
                     break;
-                case ("Square"):
-                    calculator_textbox.Text = $"{calculator_textbox.Text}^2";
+                case ("POW"):
+                    calculator_textbox.Text = $"POW({calculator_textbox.Text})";
                     break;
                 case ("SIN"):
                     calculator_textbox.Text = $"SIN({calculator_textbox.Text})";
@@ -116,11 +149,14 @@ namespace assignment_3
         private void handle_clear(object sender, EventArgs e)
         {
             calculator_textbox.Text = 0.ToString();
+            this.calculator_contents = 0.ToString();
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
             calculator_textbox.Text = 0.ToString();
-            calculator_history.Clear();
+            this.calculator_contents = calculator_textbox.Text;
+            //calculator_history.Clear();
         }
         //Day Difference Calculator
         private void calculate_date_difference(object sender, EventArgs e)
@@ -147,6 +183,7 @@ namespace assignment_3
         {
             toolStripStatusLabel1.Text = $"Hello! Today is {DateTime.Today.ToLongDateString()}. The time is: {DateTime.Now.ToLongTimeString()}";
         }
-        Dictionary<String, String> calculator_history;
+        //Lookup<String, String> calculator_history;
+        String calculator_contents;
     }
 }
