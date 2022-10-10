@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//TODO: implement power button on main calculator form
+
 namespace assignment_3
 {
     public partial class Form1 : Form
@@ -19,125 +19,28 @@ namespace assignment_3
         }
 
         //Calculator
-        private void calculate_result(object sender, EventArgs e)
+        private void calculate_result_handler(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            var v = new object();
-            this.calculator_contents = "";
-            String operator_value = "";
-            String op = "";
-            try
-            {
-                get_special_operator(ref calculator_contents, ref operator_value, ref op);
-                if (op.Equals("√"))
-                    calculator_contents += Math.Sqrt(Double.Parse(operator_value));
-                else if (op.Equals("COS"))
-                    calculator_contents += Math.Cos(Double.Parse(operator_value));
-                else if (op.Equals("SIN"))
-                    calculator_contents += Math.Sin(Double.Parse(operator_value));
-                else if (op.Equals("TAN"))
-                    calculator_contents += Math.Tan(Double.Parse(operator_value));
-                else if (op.Equals("LOG"))
-                    calculator_contents += Math.Log(Double.Parse(operator_value));
-                else if (op.Equals("POW"))
-                    calculator_contents += Math.Pow(Double.Parse(operator_value), 2);
-                v = new DataTable().Compute(calculator_contents, "");
-                //this.calculator_history.Add(calculator_contents, v.ToString());
-                calculator_textbox.Text = v.ToString();
-                calculator_contents = v.ToString();
-            }
-            catch (Exception ex)
-            {
-                v = "NaN";
-            }
-        }
+            String result = Calculator_Logic.calculate_result(sender, calculator_textbox, this.calculator_contents);
+            calculator_textbox.Text = result;
+            calculator_contents = result;
 
-        private void get_special_operator(ref string calculator_contents, ref string operator_value, ref string op)
-        {
-            for (int i = 0; i < calculator_textbox.Text.Length; i++)
-            {
-                char c = calculator_textbox.Text[i];
-                if (!Char.IsDigit(c) && op.Length < 3)
-                {
-                    switch (c)
-                    {
-                        case '√':
-                        case 'S':
-                        case 'C':
-                        case 'T':
-                        case 'L':
-                        case 'P':
-                            for (int j = i + 1; j < calculator_textbox.Text.Length; j++)
-                            {
-                                op = calculator_textbox.Text.Substring(i, j);
-                                if (calculator_textbox.Text[j] == '(')
-                                    break;
-                            }
-                            break;
-                    }
-                }
-                if (Char.IsDigit(c))
-                    operator_value += c;
-            }
         }
 
         private void operator_handler(object sender, EventArgs e)
         {
-            if (calculator_textbox.Text == "NaN" || calculator_textbox.Text == "∞")
-                calculator_textbox.Clear();
-            Button button = sender as Button;
-            switch (button.Name)
-            {
-                case "squareroot":
-                    calculator_textbox.Text = $"√({calculator_textbox.Text})";
-                    break;
-                case "inverse":
-                    calculator_textbox.Text = $"1/({calculator_textbox.Text})";
-                    break;
-                case "square":
-                    calculator_textbox.Text = $"POW({calculator_textbox.Text})";
-                    break;
-                case "ERASE":
-                    calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
-                    break;
-                case "negate":
-                    if (calculator_textbox.Text.Substring(0, 1) == "-")
-                        calculator_textbox.Text = calculator_textbox.Text.Remove(0, 1);
-                    else
-                        calculator_textbox.Text = $"-{calculator_textbox.Text}";
-                    break;
-                default:
-                    calculator_textbox.Text += button.Text;
-                    break;
-            }
+            Calculator_Logic.insert_operator(sender, calculator_textbox);
         }
+
+
+
         private void Toolstrip_Operator_Handler(object sender, EventArgs e)
         {
-            ToolStripButton button = sender as ToolStripButton;
-            switch (button.Name)
-            {
-                case ("LOG"):
-                    calculator_textbox.Text = $"LOG({calculator_textbox.Text})";
-                    break;
-                case ("POW"):
-                    calculator_textbox.Text = $"POW({calculator_textbox.Text})";
-                    break;
-                case ("SIN"):
-                    calculator_textbox.Text = $"SIN({calculator_textbox.Text})";
-                    break;
-                case ("COS"):
-                    calculator_textbox.Text = $"COS({calculator_textbox.Text})";
-                    break;
-                case ("TAN"):
-                    calculator_textbox.Text = $"TAN({calculator_textbox.Text})";
-                    break;
-                case ("ERASE"):
-                    calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
-                    if (calculator_textbox.Text.Length == 0)
-                        calculator_textbox.Text = 0.ToString();
-                    break;
-            }
+            Calculator_Logic.insert_nonbinary_function(sender, calculator_textbox);
         }
+
+
+
         private void digit_handler(object sender, EventArgs e)
         {
             if (calculator_textbox.Text == "0" || calculator_textbox.Text == "NaN" || calculator_textbox.Text == "∞")
@@ -157,6 +60,7 @@ namespace assignment_3
             this.calculator_contents = calculator_textbox.Text;
             //calculator_history.Clear();
         }
+
         //Day Difference Calculator
         private void calculate_date_difference(object sender, EventArgs e)
         {
@@ -227,5 +131,6 @@ namespace assignment_3
 
         //Lookup<String, String> calculator_history;
         String calculator_contents;
+
     }
 }

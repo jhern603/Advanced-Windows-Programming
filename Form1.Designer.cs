@@ -311,7 +311,7 @@ namespace assignment_3
             this.button24.TabIndex = 25;
             this.button24.Text = "=";
             this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.calculate_result);
+            this.button24.Click += new System.EventHandler(this.calculate_result_handler);
             // 
             // button23
             // 
