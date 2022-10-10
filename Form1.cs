@@ -21,8 +21,6 @@ namespace assignment_3
         //Calculator
         private void calculate_result(object sender, EventArgs e)
         {
-            //TODO: fix inverse, SIN, COS, TAN, LOG
-            //Perhaps a sliding window?
             Button button = sender as Button;
             var v = new object();
             this.calculator_contents = "";
@@ -184,8 +182,7 @@ namespace assignment_3
         {
             toolStripStatusLabel1.Text = $"Hello! Today is {DateTime.Today.ToLongDateString()}. The time is: {DateTime.Now.ToLongTimeString()}";
         }
-        //Lookup<String, String> calculator_history;
-        String calculator_contents;
+
 
         private void print_calculator_history(object sender, EventArgs e)
         {
@@ -227,5 +224,8 @@ namespace assignment_3
                 }
 
         }
+
+        //Lookup<String, String> calculator_history;
+        String calculator_contents;
     }
 }
