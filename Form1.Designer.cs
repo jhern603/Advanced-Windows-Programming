@@ -89,7 +89,7 @@ namespace assignment_3
             this.COS = new System.Windows.Forms.ToolStripButton();
             this.TAN = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.print_history_button = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
@@ -107,9 +107,9 @@ namespace assignment_3
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dayCounterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.graphSectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculator_background_picker = new System.Windows.Forms.ToolStripMenuItem();
+            this.day_counter_background_picker = new System.Windows.Forms.ToolStripMenuItem();
+            this.graph_background_picker = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearCalculatorHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,8 +124,8 @@ namespace assignment_3
             this.graphMatrixcsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.multipleGraphsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifyCalculatorDisplayFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifyBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.change_calculator_font_button = new System.Windows.Forms.ToolStripMenuItem();
+            this.form_background_picker = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -825,7 +825,7 @@ namespace assignment_3
             this.COS,
             this.TAN,
             this.toolStripSeparator3,
-            this.toolStripButton8});
+            this.print_history_button});
             this.toolStrip1.Location = new System.Drawing.Point(0, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(40, 209);
@@ -923,15 +923,16 @@ namespace assignment_3
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(38, 6);
             // 
-            // toolStripButton8
+            // print_history_button
             // 
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = global::assignment_3.Properties.Resources.printing;
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(38, 20);
-            this.toolStripButton8.Text = "Print";
-            this.toolStripButton8.ToolTipText = "Print calculator history";
+            this.print_history_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.print_history_button.Image = global::assignment_3.Properties.Resources.printing;
+            this.print_history_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.print_history_button.Name = "print_history_button";
+            this.print_history_button.Size = new System.Drawing.Size(38, 20);
+            this.print_history_button.Text = "Print";
+            this.print_history_button.ToolTipText = "Print calculator history";
+            this.print_history_button.Click += new System.EventHandler(this.print_calculator_history);
             // 
             // toolStrip2
             // 
@@ -1081,32 +1082,35 @@ namespace assignment_3
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.calculatorToolStripMenuItem,
-            this.dayCounterToolStripMenuItem,
-            this.graphSectionToolStripMenuItem});
+            this.calculator_background_picker,
+            this.day_counter_background_picker,
+            this.graph_background_picker});
             this.toolStripDropDownButton1.Image = global::assignment_3.Properties.Resources.palette;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
             this.toolStripDropDownButton1.Text = "Application_Background";
             // 
-            // calculatorToolStripMenuItem
+            // calculator_background_picker
             // 
-            this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
-            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.calculatorToolStripMenuItem.Text = "Calculator";
+            this.calculator_background_picker.Name = "calculator_background_picker";
+            this.calculator_background_picker.Size = new System.Drawing.Size(180, 22);
+            this.calculator_background_picker.Text = "Calculator";
+            this.calculator_background_picker.Click += new System.EventHandler(this.change_background_color);
             // 
-            // dayCounterToolStripMenuItem
+            // day_counter_background_picker
             // 
-            this.dayCounterToolStripMenuItem.Name = "dayCounterToolStripMenuItem";
-            this.dayCounterToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.dayCounterToolStripMenuItem.Text = "Day Counter";
+            this.day_counter_background_picker.Name = "day_counter_background_picker";
+            this.day_counter_background_picker.Size = new System.Drawing.Size(180, 22);
+            this.day_counter_background_picker.Text = "Day Counter";
+            this.day_counter_background_picker.Click += new System.EventHandler(this.change_background_color);
             // 
-            // graphSectionToolStripMenuItem
+            // graph_background_picker
             // 
-            this.graphSectionToolStripMenuItem.Name = "graphSectionToolStripMenuItem";
-            this.graphSectionToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.graphSectionToolStripMenuItem.Text = "Graph Section";
+            this.graph_background_picker.Name = "graph_background_picker";
+            this.graph_background_picker.Size = new System.Drawing.Size(180, 22);
+            this.graph_background_picker.Text = "Graph Section";
+            this.graph_background_picker.Click += new System.EventHandler(this.change_background_color);
             // 
             // menuStrip1
             // 
@@ -1208,23 +1212,25 @@ namespace assignment_3
             // appearanceToolStripMenuItem
             // 
             this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifyCalculatorDisplayFontToolStripMenuItem,
-            this.modifyBackgroundColorToolStripMenuItem});
+            this.change_calculator_font_button,
+            this.form_background_picker});
             this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
             this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.appearanceToolStripMenuItem.Text = "Appearance";
             // 
-            // modifyCalculatorDisplayFontToolStripMenuItem
+            // change_calculator_font_button
             // 
-            this.modifyCalculatorDisplayFontToolStripMenuItem.Name = "modifyCalculatorDisplayFontToolStripMenuItem";
-            this.modifyCalculatorDisplayFontToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.modifyCalculatorDisplayFontToolStripMenuItem.Text = "Modify Calculator Display Font";
+            this.change_calculator_font_button.Name = "change_calculator_font_button";
+            this.change_calculator_font_button.Size = new System.Drawing.Size(237, 22);
+            this.change_calculator_font_button.Text = "Modify Calculator Display Font";
+            this.change_calculator_font_button.Click += new System.EventHandler(this.change_calculator_font);
             // 
-            // modifyBackgroundColorToolStripMenuItem
+            // form_background_picker
             // 
-            this.modifyBackgroundColorToolStripMenuItem.Name = "modifyBackgroundColorToolStripMenuItem";
-            this.modifyBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.modifyBackgroundColorToolStripMenuItem.Text = "Modify Background Color";
+            this.form_background_picker.Name = "form_background_picker";
+            this.form_background_picker.Size = new System.Drawing.Size(237, 22);
+            this.form_background_picker.Text = "Modify Background Color";
+            this.form_background_picker.Click += new System.EventHandler(this.change_background_color);
             // 
             // helpToolStripMenuItem
             // 
@@ -1324,8 +1330,8 @@ namespace assignment_3
         private System.Windows.Forms.ToolStripMenuItem graphMatrixcsvToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem multipleGraphsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appearanceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modifyCalculatorDisplayFontToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modifyBackgroundColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem change_calculator_font_button;
+        private System.Windows.Forms.ToolStripMenuItem form_background_picker;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -1333,9 +1339,9 @@ namespace assignment_3
         private System.Windows.Forms.SplitContainer horizontal_container;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dayCounterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem graphSectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem calculator_background_picker;
+        private System.Windows.Forms.ToolStripMenuItem day_counter_background_picker;
+        private System.Windows.Forms.ToolStripMenuItem graph_background_picker;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown dayCounter;
@@ -1389,7 +1395,7 @@ namespace assignment_3
         private System.Windows.Forms.ToolStripButton COS;
         private System.Windows.Forms.ToolStripButton TAN;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripButton print_history_button;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripButton toolStripButton11;

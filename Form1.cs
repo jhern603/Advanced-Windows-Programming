@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,7 +97,7 @@ namespace assignment_3
                     calculator_textbox.Text = $"1/({calculator_textbox.Text})";
                     break;
                 case "square":
-                    calculator_textbox.Text = $"{calculator_textbox.Text}^2";
+                    calculator_textbox.Text = $"POW({calculator_textbox.Text})";
                     break;
                 case "ERASE":
                     calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
@@ -185,5 +186,46 @@ namespace assignment_3
         }
         //Lookup<String, String> calculator_history;
         String calculator_contents;
+
+        private void print_calculator_history(object sender, EventArgs e)
+        {
+            PrintDialog PrintDialog1 = new PrintDialog();
+            PrintDocument printDoc = new PrintDocument();
+            PrintDialog1.ShowDialog();
+        }
+
+        //Appearance Settings
+        private void change_background_color(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menu_item = sender as ToolStripMenuItem;
+            ColorDialog color_dialog = new ColorDialog();
+            if (color_dialog.ShowDialog() == DialogResult.OK)
+                switch (menu_item.Name)
+                {
+                    case "calculator_background_picker":
+                        horizontal_container.Panel1.BackColor = color_dialog.Color;
+                        break;
+                    case "day_counter_background_picker":
+                        horizontal_container.Panel2.BackColor = color_dialog.Color;
+                        break;
+                    case "graph_background_picker":
+                        splitContainer1.Panel2.BackColor = color_dialog.Color;
+                        break;
+                    case "form_background_picker":
+                        this.BackColor = color_dialog.Color;
+                        break;
+                }
+        }
+
+        private void change_calculator_font(object sender, EventArgs e)
+        {
+            FontDialog font_dialog = new FontDialog();
+            if (font_dialog.ShowDialog() == DialogResult.OK)
+                foreach (Control control_item in tableLayoutPanel1.Controls)
+                {
+                    control_item.Font = font_dialog.Font;
+                }
+
+        }
     }
 }
