@@ -16,6 +16,7 @@ namespace assignment_3
         public Form1()
         {
             InitializeComponent();
+            this.algos = new GraphAlgorithms(toolStripProgressBar1, toolStripStatusLabel2, statusStrip2);
         }
 
         //Calculator
@@ -128,9 +129,88 @@ namespace assignment_3
                 }
 
         }
+        //Open Files
+        private void Open_Multiple_Files(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                foreach (String file in openFileDialog1.FileNames)
+                {
+                    try
+                    {
+                        listBox1.Items.Add(file);
+                        if (file.EndsWith("txt"))
+                        {
+                            this.algos.ReadGraphFromTXTFile(file);
+                        }
+                        else if (file.EndsWith("csv"))
+                        {
+                            this.algos.ReadGraphFromCSVFile(file);
+                        }
+                        else
+                            throw new Exception("This file type is not accepted.\nPlease select either a *.csv file or a *.txt file.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+        private void Open_File(object sender, EventArgs e)
+        {
+            ToolStripButton open = sender as ToolStripButton;
+            if (open.Text.Equals("txt"))
+            {
+                openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+                openFileDialog1.Multiselect = false;
+            }
+            else if (open.Text.Equals("csv"))
+            {
+                openFileDialog1.Filter = "csv files (*.csv)|*.csv";
+                openFileDialog1.Multiselect = false;
+
+            }
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    listBox1.Items.Add(openFileDialog1.FileNames[0]);
+                    if (openFileDialog1.FileNames[0].EndsWith("txt"))
+                    {
+                        this.algos.ReadGraphFromTXTFile(openFileDialog1.FileNames[0]);
+                    }
+                    else if (openFileDialog1.FileNames[0].EndsWith("csv"))
+                    {
+                        this.algos.ReadGraphFromCSVFile(openFileDialog1.FileNames[0]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+        private void Run_Prim_Algorithm(object sender, EventArgs e)
+        {
+            this.algos.GetMST(listBox1.GetItemText(listBox1.SelectedItem));
+            listBox2.Items.Add($"MST: {listBox1.GetItemText(listBox1.SelectedItem)}");
+        }
+        private void Run_Dijkstra_Algorithm(object sender, EventArgs e)
+        {
+            this.algos.Dijkstra(listBox1.GetItemText(listBox1.SelectedItem));
+            listBox2.Items.Add($"Shortest Paths: {listBox1.GetItemText(listBox1.SelectedItem)}");
+        }
+
+        private void Save_Graph_Result(object sender, EventArgs e)
+        {
+
+        }
 
         //Lookup<String, String> calculator_history;
-        String calculator_contents;
-
+        private String calculator_contents;
+        private GraphAlgorithms algos;
     }
 }
