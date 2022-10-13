@@ -8,8 +8,13 @@ using System.Windows.Forms;
 
 namespace assignment_3
 {
+    //Change calculator textbox to listbox for easier management with history
     public class Calculator_Logic
     {
+        public Calculator_Logic()
+        {
+            this.calculator_history = new List<string>();
+        }
         public static void insert_nonbinary_function(object sender, TextBox calculator_textbox)
         {
             ToolStripButton button = sender as ToolStripButton;
@@ -55,7 +60,10 @@ namespace assignment_3
                     calculator_textbox.Text = $"POW({calculator_textbox.Text})";
                     break;
                 case "ERASE":
-                    calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
+                    if (calculator_textbox.Text.Length > 1)
+                        calculator_textbox.Text = calculator_textbox.Text.Remove(calculator_textbox.Text.Length - 1, 1);
+                    else
+                        calculator_textbox.Text = 0.ToString();
                     break;
                 case "negate":
                     if (calculator_textbox.Text.Substring(0, 1) == "-")
@@ -98,7 +106,7 @@ namespace assignment_3
             }
         }
 
-        public static String calculate_result(object sender, TextBox calculator_textbox, String calculator_contents)
+        public String calculate_result(object sender, TextBox calculator_textbox, String calculator_contents)
         {
             Button button = sender as Button;
             var v = new object();
@@ -123,7 +131,8 @@ namespace assignment_3
                 else
                     calculator_contents = calculator_textbox.Text;
                 v = new DataTable().Compute(calculator_contents, "");
-                //this.calculator_history.Add(calculator_contents, v.ToString());
+
+                calculator_history.Add(calculator_textbox.Text + "=" + v.ToString());
                 return v.ToString();
             }
             catch (Exception ex)
@@ -132,5 +141,6 @@ namespace assignment_3
                 v = "NaN";
             }
         }
+        public List<String> calculator_history;
     }
 }

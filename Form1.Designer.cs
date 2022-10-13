@@ -79,7 +79,7 @@ namespace assignment_3
             this.label5 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.save_calculator_history_button = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.LOG = new System.Windows.Forms.ToolStripButton();
@@ -95,8 +95,8 @@ namespace assignment_3
             this.open_csv = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
+            this.delete_selected_file_button = new System.Windows.Forms.ToolStripButton();
+            this.delete_all_graphs_button = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
@@ -184,6 +184,7 @@ namespace assignment_3
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            this.toolStripContainer1.TopToolStripPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip2);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip3);
             // 
@@ -682,7 +683,7 @@ namespace assignment_3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 75);
+            this.label3.Location = new System.Drawing.Point(17, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 7;
@@ -712,7 +713,7 @@ namespace assignment_3
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 107);
+            this.label2.Location = new System.Drawing.Point(17, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 1;
@@ -730,7 +731,7 @@ namespace assignment_3
             // fromDate
             // 
             this.fromDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.fromDate.Location = new System.Drawing.Point(59, 103);
+            this.fromDate.Location = new System.Drawing.Point(59, 99);
             this.fromDate.Name = "fromDate";
             this.fromDate.Size = new System.Drawing.Size(200, 20);
             this.fromDate.TabIndex = 5;
@@ -739,7 +740,7 @@ namespace assignment_3
             // toDate
             // 
             this.toDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.toDate.Location = new System.Drawing.Point(59, 71);
+            this.toDate.Location = new System.Drawing.Point(59, 67);
             this.toDate.Name = "toDate";
             this.toDate.Size = new System.Drawing.Size(200, 20);
             this.toDate.TabIndex = 4;
@@ -749,7 +750,7 @@ namespace assignment_3
             // 
             this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(81, 379);
+            this.listBox2.Location = new System.Drawing.Point(81, 354);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(469, 56);
             this.listBox2.TabIndex = 5;
@@ -788,7 +789,7 @@ namespace assignment_3
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(78, 353);
+            this.label6.Location = new System.Drawing.Point(78, 328);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 2;
@@ -815,9 +816,11 @@ namespace assignment_3
             // 
             // toolStrip1
             // 
+            this.toolStrip1.CanOverflow = false;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.save_calculator_history_button,
             this.toolStripButton2,
             this.toolStripSeparator1,
             this.LOG,
@@ -830,19 +833,20 @@ namespace assignment_3
             this.print_history_button});
             this.toolStrip1.Location = new System.Drawing.Point(0, 3);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(40, 209);
+            this.toolStrip1.Size = new System.Drawing.Size(40, 200);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // save_calculator_history_button
             // 
-            this.toolStripButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::assignment_3.Properties.Resources.diskette;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(38, 20);
-            this.toolStripButton1.Text = "Save";
+            this.save_calculator_history_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.save_calculator_history_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.save_calculator_history_button.Image = global::assignment_3.Properties.Resources.diskette;
+            this.save_calculator_history_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.save_calculator_history_button.Name = "save_calculator_history_button";
+            this.save_calculator_history_button.Size = new System.Drawing.Size(38, 20);
+            this.save_calculator_history_button.Text = "Save Calculator History";
+            this.save_calculator_history_button.Click += new System.EventHandler(this.save_calculator_history);
             // 
             // toolStripButton2
             // 
@@ -938,14 +942,15 @@ namespace assignment_3
             // 
             // toolStrip2
             // 
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.open_txt,
             this.open_csv,
             this.toolStripButton11,
             this.toolStripSeparator4,
-            this.toolStripButton12,
-            this.toolStripButton13,
+            this.delete_selected_file_button,
+            this.delete_all_graphs_button,
             this.toolStripSeparator5,
             this.toolStripButton14,
             this.toolStripButton15,
@@ -955,7 +960,7 @@ namespace assignment_3
             this.toolStripButton17});
             this.toolStrip2.Location = new System.Drawing.Point(0, 3);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(24, 242);
+            this.toolStrip2.Size = new System.Drawing.Size(24, 233);
             this.toolStrip2.TabIndex = 1;
             // 
             // open_txt
@@ -964,8 +969,8 @@ namespace assignment_3
             this.open_txt.Image = global::assignment_3.Properties.Resources.txt_file_symbol;
             this.open_txt.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.open_txt.Name = "open_txt";
-            this.open_txt.Size = new System.Drawing.Size(30, 20);
-            this.open_txt.Text = "open_text_file";
+            this.open_txt.Size = new System.Drawing.Size(21, 20);
+            this.open_txt.Text = "open text file";
             this.open_txt.ToolTipText = "open text file";
             this.open_txt.Click += new System.EventHandler(this.Open_File);
             // 
@@ -975,8 +980,8 @@ namespace assignment_3
             this.open_csv.Image = global::assignment_3.Properties.Resources.csv_file_format_extension;
             this.open_csv.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.open_csv.Name = "open_csv";
-            this.open_csv.Size = new System.Drawing.Size(30, 20);
-            this.open_csv.Text = "open_csv_file";
+            this.open_csv.Size = new System.Drawing.Size(21, 20);
+            this.open_csv.Text = "open csv file";
             this.open_csv.Click += new System.EventHandler(this.Open_File);
             // 
             // toolStripButton11
@@ -985,7 +990,7 @@ namespace assignment_3
             this.toolStripButton11.Image = global::assignment_3.Properties.Resources.more;
             this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(30, 20);
+            this.toolStripButton11.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton11.Text = "hamburger_idk";
             this.toolStripButton11.ToolTipText = "import multiple items";
             this.toolStripButton11.Click += new System.EventHandler(this.Open_Multiple_Files);
@@ -993,32 +998,34 @@ namespace assignment_3
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(30, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(21, 6);
             // 
-            // toolStripButton12
+            // delete_selected_file_button
             // 
-            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton12.Image = global::assignment_3.Properties.Resources.close;
-            this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton12.Name = "toolStripButton12";
-            this.toolStripButton12.Size = new System.Drawing.Size(30, 20);
-            this.toolStripButton12.Text = "cancel";
-            this.toolStripButton12.ToolTipText = "Delete Selected Imported Graph";
+            this.delete_selected_file_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.delete_selected_file_button.Image = global::assignment_3.Properties.Resources.close;
+            this.delete_selected_file_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.delete_selected_file_button.Name = "delete_selected_file_button";
+            this.delete_selected_file_button.Size = new System.Drawing.Size(21, 20);
+            this.delete_selected_file_button.Text = "cancel";
+            this.delete_selected_file_button.ToolTipText = "Delete Selected Imported Graph";
+            this.delete_selected_file_button.Click += new System.EventHandler(this.delete_selected_graph);
             // 
-            // toolStripButton13
+            // delete_all_graphs_button
             // 
-            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton13.Image = global::assignment_3.Properties.Resources.trash_can;
-            this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton13.Name = "toolStripButton13";
-            this.toolStripButton13.Size = new System.Drawing.Size(30, 20);
-            this.toolStripButton13.Text = "trash_graphs";
-            this.toolStripButton13.ToolTipText = "Delete All Imported Graphs";
+            this.delete_all_graphs_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.delete_all_graphs_button.Image = global::assignment_3.Properties.Resources.trash_can;
+            this.delete_all_graphs_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.delete_all_graphs_button.Name = "delete_all_graphs_button";
+            this.delete_all_graphs_button.Size = new System.Drawing.Size(21, 20);
+            this.delete_all_graphs_button.Text = "trash_graphs";
+            this.delete_all_graphs_button.ToolTipText = "Delete All Imported Graphs";
+            this.delete_all_graphs_button.Click += new System.EventHandler(this.delete_all_graphs);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(30, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(21, 6);
             // 
             // toolStripButton14
             // 
@@ -1026,7 +1033,7 @@ namespace assignment_3
             this.toolStripButton14.Image = global::assignment_3.Properties.Resources.graph;
             this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton14.Name = "toolStripButton14";
-            this.toolStripButton14.Size = new System.Drawing.Size(30, 20);
+            this.toolStripButton14.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton14.Text = "prim";
             this.toolStripButton14.ToolTipText = "Run Prim\'s Algorithm";
             this.toolStripButton14.Click += new System.EventHandler(this.Run_Prim_Algorithm);
@@ -1037,14 +1044,14 @@ namespace assignment_3
             this.toolStripButton15.Image = global::assignment_3.Properties.Resources.finish;
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(30, 20);
+            this.toolStripButton15.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton15.Text = "Run Dijkstra\'s Algorithm";
             this.toolStripButton15.Click += new System.EventHandler(this.Run_Dijkstra_Algorithm);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(30, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(21, 6);
             // 
             // Save_Graph_Button
             // 
@@ -1052,7 +1059,7 @@ namespace assignment_3
             this.Save_Graph_Button.Image = global::assignment_3.Properties.Resources.diskette;
             this.Save_Graph_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Save_Graph_Button.Name = "Save_Graph_Button";
-            this.Save_Graph_Button.Size = new System.Drawing.Size(30, 20);
+            this.Save_Graph_Button.Size = new System.Drawing.Size(21, 20);
             this.Save_Graph_Button.Text = "save";
             this.Save_Graph_Button.ToolTipText = "Save Graph Results";
             this.Save_Graph_Button.Click += new System.EventHandler(this.Save_Graph_Result);
@@ -1060,7 +1067,7 @@ namespace assignment_3
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(30, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(21, 6);
             // 
             // toolStripButton17
             // 
@@ -1068,8 +1075,9 @@ namespace assignment_3
             this.toolStripButton17.Image = global::assignment_3.Properties.Resources.printing;
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(30, 20);
+            this.toolStripButton17.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton17.Text = "print";
+            this.toolStripButton17.Click += new System.EventHandler(this.print_result);
             // 
             // menuStrip2
             // 
@@ -1082,18 +1090,19 @@ namespace assignment_3
             // 
             // toolStrip3
             // 
-            this.toolStrip3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.toolStrip3.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1});
             this.toolStrip3.Location = new System.Drawing.Point(26, 24);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip3.Size = new System.Drawing.Size(41, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(32, 25);
             this.toolStrip3.TabIndex = 2;
             // 
             // toolStripDropDownButton1
             // 
+            this.toolStripDropDownButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.calculator_background_picker,
@@ -1101,28 +1110,32 @@ namespace assignment_3
             this.graph_background_picker});
             this.toolStripDropDownButton1.Image = global::assignment_3.Properties.Resources.palette;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.toolStripDropDownButton1.MergeIndex = 0;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 25);
             this.toolStripDropDownButton1.Text = "Application_Background";
+            this.toolStripDropDownButton1.ToolTipText = "Change Background Color";
             // 
             // calculator_background_picker
             // 
             this.calculator_background_picker.Name = "calculator_background_picker";
-            this.calculator_background_picker.Size = new System.Drawing.Size(148, 22);
+            this.calculator_background_picker.Size = new System.Drawing.Size(180, 22);
             this.calculator_background_picker.Text = "Calculator";
             this.calculator_background_picker.Click += new System.EventHandler(this.change_background_color);
             // 
             // day_counter_background_picker
             // 
             this.day_counter_background_picker.Name = "day_counter_background_picker";
-            this.day_counter_background_picker.Size = new System.Drawing.Size(148, 22);
+            this.day_counter_background_picker.Size = new System.Drawing.Size(180, 22);
             this.day_counter_background_picker.Text = "Day Counter";
             this.day_counter_background_picker.Click += new System.EventHandler(this.change_background_color);
             // 
             // graph_background_picker
             // 
             this.graph_background_picker.Name = "graph_background_picker";
-            this.graph_background_picker.Size = new System.Drawing.Size(148, 22);
+            this.graph_background_picker.Size = new System.Drawing.Size(180, 22);
             this.graph_background_picker.Text = "Graph Section";
             this.graph_background_picker.Click += new System.EventHandler(this.change_background_color);
             // 
@@ -1157,12 +1170,14 @@ namespace assignment_3
             this.clearCalculatorHistoryToolStripMenuItem.Name = "clearCalculatorHistoryToolStripMenuItem";
             this.clearCalculatorHistoryToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.clearCalculatorHistoryToolStripMenuItem.Text = "Clear Calculator History";
+            this.clearCalculatorHistoryToolStripMenuItem.Click += new System.EventHandler(this.handle_clear);
             // 
             // saveCalculatorHistoryAsToolStripMenuItem
             // 
             this.saveCalculatorHistoryAsToolStripMenuItem.Name = "saveCalculatorHistoryAsToolStripMenuItem";
             this.saveCalculatorHistoryAsToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.saveCalculatorHistoryAsToolStripMenuItem.Text = "Save Calculator History As...";
+            this.saveCalculatorHistoryAsToolStripMenuItem.Click += new System.EventHandler(this.save_calculator_history);
             // 
             // printCalculatorHistroryToolStripMenuItem
             // 
@@ -1175,12 +1190,14 @@ namespace assignment_3
             this.saveMinimumSpanningTreeAsToolStripMenuItem.Name = "saveMinimumSpanningTreeAsToolStripMenuItem";
             this.saveMinimumSpanningTreeAsToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.saveMinimumSpanningTreeAsToolStripMenuItem.Text = "Save Minimum Spanning Tree As...";
+            this.saveMinimumSpanningTreeAsToolStripMenuItem.Click += new System.EventHandler(this.Run_Prim_Algorithm);
             // 
             // saveShortestPathsAsToolStripMenuItem
             // 
             this.saveShortestPathsAsToolStripMenuItem.Name = "saveShortestPathsAsToolStripMenuItem";
             this.saveShortestPathsAsToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.saveShortestPathsAsToolStripMenuItem.Text = "Save Shortest Paths As...";
+            this.saveShortestPathsAsToolStripMenuItem.Click += new System.EventHandler(this.Run_Dijkstra_Algorithm);
             // 
             // exitToolStripMenuItem
             // 
@@ -1204,24 +1221,28 @@ namespace assignment_3
             this.calculatorHistoryToolStripMenuItem.Name = "calculatorHistoryToolStripMenuItem";
             this.calculatorHistoryToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.calculatorHistoryToolStripMenuItem.Text = "Calculator History";
+            this.calculatorHistoryToolStripMenuItem.Click += new System.EventHandler(this.open_calculator_history);
             // 
             // graphMatrixtxtToolStripMenuItem
             // 
             this.graphMatrixtxtToolStripMenuItem.Name = "graphMatrixtxtToolStripMenuItem";
             this.graphMatrixtxtToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.graphMatrixtxtToolStripMenuItem.Text = "Graph Matrix (.txt)";
+            this.graphMatrixtxtToolStripMenuItem.Click += new System.EventHandler(this.Open_File_MenuStrip);
             // 
             // graphMatrixcsvToolStripMenuItem
             // 
             this.graphMatrixcsvToolStripMenuItem.Name = "graphMatrixcsvToolStripMenuItem";
             this.graphMatrixcsvToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.graphMatrixcsvToolStripMenuItem.Text = "Graph Matrix (.csv)";
+            this.graphMatrixcsvToolStripMenuItem.Click += new System.EventHandler(this.Open_File_MenuStrip);
             // 
             // multipleGraphsToolStripMenuItem
             // 
             this.multipleGraphsToolStripMenuItem.Name = "multipleGraphsToolStripMenuItem";
             this.multipleGraphsToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.multipleGraphsToolStripMenuItem.Text = "Multiple Graphs";
+            this.multipleGraphsToolStripMenuItem.Click += new System.EventHandler(this.Open_Multiple_Files);
             // 
             // appearanceToolStripMenuItem
             // 
@@ -1410,7 +1431,7 @@ namespace assignment_3
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton save_calculator_history_button;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton LOG;
@@ -1425,8 +1446,8 @@ namespace assignment_3
         private System.Windows.Forms.ToolStripButton open_csv;
         private System.Windows.Forms.ToolStripButton toolStripButton11;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton toolStripButton12;
-        private System.Windows.Forms.ToolStripButton toolStripButton13;
+        private System.Windows.Forms.ToolStripButton delete_selected_file_button;
+        private System.Windows.Forms.ToolStripButton delete_all_graphs_button;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButton14;
         private System.Windows.Forms.ToolStripButton toolStripButton15;
